@@ -1,4 +1,4 @@
-//src/js/calculator.js - KLAR
+//src/js/calculator.js
 
 function BMICalculator(){
     };

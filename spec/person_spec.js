@@ -1,4 +1,4 @@
-//spec/person_spec.js - KLAR
+//spec/person_spec.js
 
 const { Person } = require('./spec.helper')
 

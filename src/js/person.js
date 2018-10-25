@@ -1,4 +1,4 @@
-// src/js/person.js - KLAR
+// src/js/person.js
 
 function Person(attr) {
     this.weight = attr.weight;

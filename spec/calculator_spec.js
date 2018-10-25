@@ -1,4 +1,4 @@
-//Spec/calculator_spec.js - KLAR
+//Spec/calculator_spec.js
 
 const { Person, BMICalculator } = require('./spec.helper')
 

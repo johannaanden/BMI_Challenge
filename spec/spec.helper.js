@@ -1,4 +1,4 @@
-//spec/spec.helper.js - KLAR
+//spec/spec.helper.js
 
 const fs = require('fs');
 const chai = require('chai');

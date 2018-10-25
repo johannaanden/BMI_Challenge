@@ -1,4 +1,4 @@
-//features/index.features.js - KLAR
+//features/index.features.js
 
 const { expect } = require('chai');
 const BrowserHelpers = require('e2e_training_wheels')
