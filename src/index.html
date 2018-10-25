@@ -3,58 +3,118 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-    <title>Page Title</title>
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-    <!--<link rel="stylesheet" type="text/css" media="screen" href="main.css" />-->
+    <meta charset="utf-8">
+    <title>BMI Calculator</title>
     <script src="js/person.js"></script>
     <script src="js/calculator.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
-    <form id="calculate">
-        <div id="metric-inputs">
-            <input type="text" id="weight-in-kgs" placeholder="Weight">
-            <input type="text" id="height-in-kgs" placeholder="Height">
-        </div>
-
-        <button type="submit" value="Calculate"> Calculate </button>
-    </form>
-    <div>
-        <span id="display_value"></span>
-        <span id="display_message"></span>
+    <!--nedan finns ej-->
+    <div id="header">
+        <h1><a title="BMI Calculator">BMI CALCULATOR</a></h1>
+        <p>Body mass index (BMI) is a measure of body fat based on your weight in relation to your height, 
+            and applies to most adult men and women aged 20 and over. 
+            BMI categorize into four different groups, "underweight", "normal weight", "overweight", or "obese". 
+        </p>
     </div>
 
-    <script type="text/javascript">
-        const global = {}
-             global.calculateForm = document.querySelector('#calculate');
-             global.displayValueElement = document.querySelector('#display_value');
-             global.displayMessageElement = document.querySelector('#display_message');
-             document.addEventListener('DOMContentLoaded', () => {
-                global.calculateForm.addEventListener('submit', event => {
-                    event.preventDefault();
+    <form id="calculate"> 
+
+        <div class="tabContainter">
+                 
+            <div class="tab" id="bminaito">
+                <h4>Choose a method</h4>
+
+                <button class="button" type="button" onclick="openTab(event, 'metric')">Metric</button>
+                <button class="button" type="button" onclick="openTab(event, 'imperial')">Imperial</button>
+
+        <div id="system">
+
+            <div id="metric" class="tabcontent" hidden>
+                    <input type="text" id="weight-in-kgs" placeholder="kg">
+                    <input type="text" id="height-in-cm" placeholder="cm">
+                    <button class="calculateButton" type="submit" value="Calculate">Calculate</button>    
+            </div>
+    
+            <div id="imperial" class="tabcontent" hidden>
+                    <input type="text" id="weight-in-lbs" placeholder="lbs">
+                    <input type="text" id="height-in-in" placeholder="inches">
+                     <button class="calculateButton" type="submit" value="Calculate">Calculate</button>
+            </div>
+
+            <div id= "results">
+                    <span id="display_value"></span>
+                   <span id="display_message"></span>
+              </div>
+        </div>
+
+    </form>
+    </div>
+    </form>
+
+            
+ <script type="text/javascript">
+       const global = {}
+            global.calculateForm = document.querySelector('#calculate');
+            global.displayValueElement = document.querySelector('#display_value');
+            global.displayMessageElement = document.querySelector('#display_message');
+        document.addEventListener('DOMContentLoaded', () => {
+        global.calculateForm.addEventListener('submit', event => {
+                            
+         event.preventDefault();
                     calculateBMI()
-                        .then(person => {
+                        .then(person => {                            
                             global.displayValueElement.innerHTML = `Your BMI is ${person.bmiValue}`;
                             global.displayMessageElement.innerHTML = `and you are ${person.bmiMessage}`;
                         })
                 })
             });
-
-            const calculateBMI = () => {
-                return new Promise(resolve => {
-                    let w = parseFloat(document.getElementById('weight-in-kgs').value);
-                    let h = parseFloat(document.getElementById('height-in-cm').value);
-                    let person = new Person({
+    
+        const calculateBMI = () => {
+        let method; 
+        let tabcontent = document.getElementsByClassName("tabcontent");
+            for (let i = 0; i < tabcontent.length; i++) {                
+            
+                if (tabcontent[i].style.display === "block") {                    
+                     method = tabcontent[i].id;                    
+                      break;                
+                }            
+        }
+         
+        return new Promise(resolve => {
+                let weightFormat = method === 'metric' ? 'weight-in-kgs' : 'weight-in-lbs'
+                let heightFormat = method === 'metric' ? 'height-in-cm' : 'height-in-in'
+                let w = parseFloat(document.getElementById(weightFormat).value);
+                let h = parseFloat(document.getElementById(heightFormat).value);
+                let person = new Person({
                     weight: w,
                     height: h,
                 });
-                person.calculate_bmi();
+                method === 'metric' ? person.calculate_bmi() : person.calculate_imperial_bmi();
                 resolve(person);
             })
         };
-        </script>
-</body>
 
-</html>
+        function openTab(evt, system) {
+            let i, button, tabcontent;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+        
+            button = document.getElementsByClassName("button");
+            for (i =0; i < button.length; i++) {
+                button[i].className = button[i].className.replace(" active", "");
+            }
+        
+            document.getElementById(system).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+     </script>
+
+</body>
+            
+</html>   

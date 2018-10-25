@@ -10,16 +10,8 @@
     "server": "superstatic src -p 3000",
     "stop-test-server": "lsof -ti tcp:$PORT | xargs kill"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/johannaanden/BMI_Challenge.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/johannaanden/BMI_Challenge/issues"
-  },
-  "homepage": "https://github.com/johannaanden/BMI_Challenge#readme",
   "devDependencies": {
     "e2e_training_wheels": "0.0.15"
   }

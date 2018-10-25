@@ -1,0 +1,72 @@
+#header {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 15%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+h1 { 
+    color: green;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+p {
+    color: black;
+    font-family: sans-serif;
+    font-size: 13px;
+    text-align: left;
+    margin-top: 10%;
+}
+
+#calculate {
+    font-family: sans-serif;
+    font-size: 20px;
+    text-align: center;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 10%;
+}
+
+.tab {
+    border-style: solid; 
+    border-color: green;
+    padding: 10px;
+}
+
+#weight-in-kgs {
+    font-size: 12px;
+    margin-left: 3%;
+    margin-top: 3%;
+    margin-bottom: 5%;
+    font-family: sans-serif;
+}
+#height-in-cm { 
+    font-size: 12px;
+    margin-left: 3%;
+    font-family: sans-serif;
+}
+
+#weight-in-lbs {
+    font-size: 12px;
+    margin-left: 3%;
+    margin-top: 3%;
+    margin-bottom: 5%;
+    font-family: sans-serif;
+}
+
+#height-in-in { 
+    font-size: 12px;
+    margin-left: 3%;
+    font-family: sans-serif;
+}
+
+#results {
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    font-size: 13px;
+    font-family: sans-serif;
+};
